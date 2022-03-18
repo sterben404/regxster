@@ -62,7 +62,20 @@ __Output__
 - The point is if it contains special characters or has many characters, use URL Encoding
 ```
 ## Example with Scripting Code
-
+Python
 ```python
+import requests
+import urllib.parse
 
+encode = urllib.parse.quote('<script>alert(0)</script>') ## Encoding Strings
+
+
+req2 = requests.get('https://regxster.herokuapp.com/?strings={}&before=<script>&after=</script>'.format(encode)) ## request URL regxster for retrieve font color value
+print(req2.text)
 ```
+
+__Output__
+
+```alert(0) ```
+
+Thanks
